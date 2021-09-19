@@ -10,19 +10,11 @@ body {
     background-color: #032C3D;
     padding: 12px 0px 9px 0px;
     margin-bottom: 5px;
-}
-
-     
-.logo {
-    color: #ffffff;
-    cursor: pointer;
-    font-family: 'Lancelot', cursive;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
+    justify-content: center;
     align-items: center;
-    text-shadow: #20dad8 2px 2px 4px;
 }
-     
 
    
 .loginSection {
@@ -35,12 +27,16 @@ body {
 }
    
 .logo-a {
-    width: 100%;
+    width: 109px;
+    height: 109px;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     margin-left: 136px;
+    position: absolute;
+    top: -12%;
+    left: -9%;
 }
    
 .loginForm {

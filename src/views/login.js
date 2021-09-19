@@ -12,7 +12,7 @@ export const loginView = `
     </header>
     <section class="loginSection">
         <div class="loginForm">
-            <img class="logo" src="img/logoform.png" alt="logologin">
+            <img class="logo-a" src="img/logoform.png" alt="logologin">
             <h1>Iniciar sesión</h1>
             <p id="login-error"></p>
             <form class="form-login">
