@@ -165,7 +165,7 @@ body {
     font-weight: 500;
    }
 
-   input[type= text] {
+   .input-post {
     background: #F7F8F4;
     color: #ffffff;
     font-size: 17px;

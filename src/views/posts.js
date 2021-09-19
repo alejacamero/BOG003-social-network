@@ -42,7 +42,7 @@ export const postsView = `
       <img class="imgMenuVertical"><img src="img/menu-vertical.png" alt="Vertical Menu">
     </div>
 
-    <input type="text" placeholder="¿Que quieres publicar hoy?">
+    <input class="input-post" type="text" placeholder="¿Que quieres publicar hoy?">
 
     <button id="publish"><a href="#/home">Publicar</a></button>
     <button id="save">Guardar</button>

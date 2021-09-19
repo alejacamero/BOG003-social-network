@@ -17,12 +17,12 @@ export const loginView = `
             <p id="login-error"></p>
             <form class="form-login">
                 <div class="input-loginName">
-                    <input id="user-login" type="text" placeholder="Nombre de usuario">
-                    <img class="" src="" alt="">
+                    <input class="inputLogin" id="user-login" type="text" placeholder="             Nombre de usuario">
+                    <img class="imgUser" src="img/dog.png" alt="">
                 </div>
                 <div class="input-loginPassword">
-                    <input id="password" type="password" placeholder="Contraseña">
-                    <img class="" src="../img/password-icon.svg" alt="">
+                    <input class="inputPassword" id="password" type="password" placeholder="             Contraseña">
+                    <img class="imgPassword" src="../img/password-icon.svg" alt="">
                 </div>
  
                 <button id="ingresar">Ingresar</button>
