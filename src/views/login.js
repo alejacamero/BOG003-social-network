@@ -24,8 +24,9 @@ export const loginView = `
                     <input class="inputPassword" id="password" type="password" placeholder="             Contraseña">
                     <img class="imgPassword" src="../img/password-icon.svg" alt="">
                 </div>
- 
-                <button id="ingresar">Ingresar</button>
+                
+                <button class="ingresar" id="ingresar">Ingresar</button>
+                <button class="IngresarGoogle" id="ingresarGoogle">Ingresar con Google</button>
             </form>
         </div>
         <div class="recordarYregistrar">
