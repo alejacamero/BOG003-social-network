@@ -129,6 +129,10 @@ body {
     font-weight: 400;
 }
 
+.buttonGoogleIngresar {
+  position: relative;
+}
+
 
 .IngresarGoogle {
     width: 100%;
@@ -142,6 +146,12 @@ body {
     margin-top: 27px;
     font-weight: 400;
     border:none;
+}
+
+.imgPasswordButton {
+    position: absolute;
+    left: 6%;
+    top: 51%;
 }
 
    

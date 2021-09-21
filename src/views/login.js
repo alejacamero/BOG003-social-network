@@ -21,12 +21,15 @@ export const loginView = `
                     <img class="imgUser" src="img/dog.png" alt="">
                 </div>
                 <div class="input-loginPassword">
-                    <input class="inputPassword" id="password" type="password" placeholder="             Contraseña">
+                    <input class="inputPassword" id="password-login" type="password" placeholder="             Contraseña">
                     <img class="imgPassword" src="../img/password-icon.svg" alt="">
                 </div>
-                
+
                 <button class="ingresar" id="ingresar">Ingresar</button>
-                <button class="IngresarGoogle" id="ingresarGoogle">Ingresar con Google</button>
+                <div class="buttonGoogleIngresar">
+                    <button class="IngresarGoogle" id="ingresarGoogle">Ingresar con Google</button>
+                    <img class="imgPasswordButton" src="../img/google.png" alt="">
+                </div>
             </form>
         </div>
         <div class="recordarYregistrar">
