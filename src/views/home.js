@@ -1,15 +1,11 @@
+
+
 export const signOut = () => {
     return firebase.auth().signOut();
 }
-firebase.firestore().collection("posts").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-    });
 
-});
 
-export const homeView = `
+export const createHome = (posts) => `
 <header class="header">
     <div class="menu">
         <div class="logo">
@@ -32,49 +28,45 @@ export const homeView = `
         <input class="inputHomeOne" type="text" placeholder="¿Qué quieres publicar hoy?">
     </form>
 </div>
-<section publicacionesHome>
-    <div class="postMuroOne">
-        <div>
-            <img class="UsuarioUno" src="../img/usuarioamigogato.png" alt="usuarioUno">
-        </div>
-        <div>
-            <h3>Nala Bernal</h3>
-            <img class="publico" src="../img/globo1.png" alt="publico">
-            <div>
-                <p>Siempre diva Nunca indiva</p>
-                <p>#diva #cat</p>
-            </div>
-        </div>
-    </div>
-    <div class="postMuroTwo">
-        <p>El amor es una palabra de cuatro patas</p>
-        <img class="fotoPublicacion" src="../img/post-home.png" alt="fotoPublicacion">
-    </div>
-    <div class="takePart">
-        <a href="#"><img src="../img/Likes-muro.png" alt="like">  Me gusta</a>
-        <a href="#"><img src="../img/comment.png" alt="comment">  Comentar</a>
-        <a href="#"><img src="../img/share.png" alt="share">  Compartir</a> 
-    </div>
-    <div class="postMuroOne">
+<section publicacionesHome>${posts}</section>
+<footer class="footer">
+</footer>
+`;
+
+export const createPost = (data) => `
+<div class="postMuroOne">
         <div>
             <img class="UsuarioUno" src="../img/profile-dog-home.png" alt="usuarioamigoperro">
         </div>
         <div>
-            <h3>Firulais Torres</h3>
+            <h3>${data.username}</h3>
             <img class="publico" src="../img/globo1.png" alt="publico">
             <div>
-                <p>«Vive». Ríete. Ladra.»</p>
-                <p>#Mundo Perruno</p>
+                <p>${data.texto}</p>
             </div>
         </div>
     </div>
+        <div class="postMuroTwo">
+            <p>El amor es una palabra de cuatro patas</p>
+            <img class="fotoPublicacion" src="../img/post-home.png" alt="fotoPublicacion">
+        </div>
     <div class="takePart">
         <a href="#"><img src="../img/Likes-muro.png" alt="like">  Me gusta</a>
         <a href="#"><img src="../img/comment.png" alt="comment">  Comentar</a>
         <a href="#"><img src="../img/share.png" alt="share">  Compartir</a> 
-    </div>
-    
-</section>
-<footer class="footer">
-</footer>
-`;
+    </div>`;
+
+
+
+export const homeView = async () => {
+    let home = "";
+    let posts = "";
+    await firebase.firestore().collection("posts").get().then(async (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            posts += createPost(doc.data());
+        });
+        home = await createHome(posts);
+    });
+    return home;
+}
+

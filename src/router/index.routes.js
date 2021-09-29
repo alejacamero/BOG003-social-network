@@ -2,14 +2,14 @@ import {Home, Login, Register, Post} from '../controllers/index.controller.js';
 
 let content = document.getElementById('root');
 
-const router = (route) => {
+const router = async (route) => {
 content.innerHTML = "";
    switch(route) {
     case '': 
         return content.appendChild(Home());
      
     case '#/': 
-        return content.appendChild(Home());
+        return content.appendChild(await Home());
      
     case '#/login':
         return content.appendChild(Login());
