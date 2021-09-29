@@ -1,4 +1,4 @@
-import {Home, Login, Register} from '../controllers/index.controller.js';
+import {Home, Login, Register, Post} from '../controllers/index.controller.js';
 
 let content = document.getElementById('root');
 
@@ -16,6 +16,9 @@ content.innerHTML = "";
 
     case '#/register':
         return content.appendChild(Register());
+    
+    case '#/post':
+        return content.appendChild(Post());
     default:
         
    }

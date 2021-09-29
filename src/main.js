@@ -2,6 +2,8 @@
 import { router } from './router/index.routes.js';
 import { registerUser, emailVerification } from './views/register.js';
 import { loginUser, loginGoogle } from './views/login.js';
+import { signOut } from './views/home.js';
+import { createPost } from './views/post.js';
 
 
 router(window.location.hash);
@@ -112,12 +114,17 @@ if (login) {
         // Signed in 
         const userLogin = userCredential.user;
         console.log(userLogin);
+        if (userLogin) {
+          localStorage.setItem("displayName", userLogin.displayName);
+          localStorage.setItem("email", userLogin.email);
+        }
+
         email.value = "";
         password.value = "";
-        const homeRoute = `${window.location.origin}/#/home`;
+        const homeRoute = `${window.location.origin}/#/`;
         window.location.replace(homeRoute);
       })
-      
+
       .catch((errorLogin) => {
         const errorCodeLogin = errorLogin.code;
         const errorMessageLogin = errorLogin.message;
@@ -143,19 +150,51 @@ if (login) {
             break;
         }
 
-         userName.value = "";
+        email.value = "";
         password.value = "";
 
       });
   });
 
   const btnGoogle = document.querySelector('#google');
-  
+
   btnGoogle.addEventListener('click', async () => {
     await loginGoogle();
-    window.location.hash = '#/home';
+    window.location.hash = '#/';
   });
-  
+
 };
 
+const btnLogOut = document.querySelector('#logout');
+if (btnLogOut) {
 
+  btnLogOut.addEventListener('click', async () => {
+    await signOut();
+    window.location.hash = '#/login';
+  });
+};
+
+const post = document.querySelector('#post-form');
+
+if (post) {
+  post.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let inputPost = document.querySelector('#input-post');
+    if (localStorage.getItem("displayName") && localStorage.getItem("email")) {
+      createPost(inputPost.value, localStorage.getItem("displayName"), localStorage.getItem("email"))
+        .then((res) => {
+          console.log(res);
+          inputPost.value = "";
+          window.location.hash = '#/';
+        })
+        .catch((error) => {
+
+          console.log(error);
+
+        })
+
+    }
+
+
+  });
+}
