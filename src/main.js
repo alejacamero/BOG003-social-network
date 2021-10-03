@@ -2,7 +2,7 @@
 import { router } from './router/index.routes.js';
 import { registerUser, emailVerification } from './views/register.js';
 import { loginUser, loginGoogle } from './views/login.js';
-import { signOut } from './views/home.js';
+import { signOut, addLike } from './views/home.js';
 import { createPost } from './views/post.js';
 
 
@@ -29,7 +29,7 @@ if (enviar) {
           // Signed in
           const user = userCredential.user;
           user.updateProfile({
-            displayName: userName,
+            displayName: userName.value,
           })
 
           email.value = "";
@@ -188,13 +188,17 @@ if (post) {
           window.location.hash = '#/';
         })
         .catch((error) => {
-
           console.log(error);
-
         })
-
     }
-
-
   });
 }
+
+document.addEventListener('click', (event) => {
+  if (event.target && event.target.id === `like`) {
+    const targetElement = event.target || event.srcElement;
+    addLike(targetElement.dataset.id, localStorage.getItem("displayName"));
+    
+  }
+})
+
