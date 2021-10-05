@@ -25,11 +25,12 @@ if (enviar) {
 
     try {
       registerUser(email.value, password.value, confirmPassword.value)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          user.updateProfile({
-            displayName: userName.value,
+          const username = userName.value;
+          await user.updateProfile({
+            displayName: username,
           })
 
           email.value = "";
