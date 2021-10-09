@@ -1,4 +1,4 @@
-import {Home, Login, Register, Post} from '../controllers/index.controller.js';
+import { views } from '../controllers/index.js';
 
 let content = document.getElementById('root');
 
@@ -6,19 +6,19 @@ const router = async (route) => {
 content.innerHTML = "";
    switch(route) {
     case '': 
-        return content.appendChild(Home());
+        return content.appendChild(views.Home());
      
     case '#/': 
-        return content.appendChild(await Home());
+        return content.appendChild(await views.Home());
      
     case '#/login':
-        return content.appendChild(Login());
+        return content.appendChild(views.Login());
 
     case '#/register':
-        return content.appendChild(Register());
+        return content.appendChild(views.Register());
     
     case '#/post':
-        return content.appendChild(Post());
+        return content.appendChild(views.Post());
     default:
         
    }
