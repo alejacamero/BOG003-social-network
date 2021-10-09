@@ -7,10 +7,20 @@ export const addLike = async (id, username) => {
     const currentDoc = await postRef.get();
     console.log(currentDoc.data());
     if (currentDoc.data() && currentDoc.data().likes && currentDoc.data().likes.includes(username)) {
-        return postRef.update({likes: firebase.firestore.FieldValue.arrayRemove(username)}); 
+        return postRef.update({ likes: firebase.firestore.FieldValue.arrayRemove(username) });
     } else {
-        return postRef.update({likes: firebase.firestore.FieldValue.arrayUnion(username)});
+        return postRef.update({ likes: firebase.firestore.FieldValue.arrayUnion(username) });
     }
+}
+
+export const deletePost = (id) => {
+    return firebase.firestore().collection("posts").doc(id).delete();
+}
+
+export const getPostText = (id) => {
+    const docRef = firebase.firestore().collection("posts").doc(id);
+
+    return docRef.get();
 }
 
 
@@ -74,7 +84,8 @@ export const createPost = (doc) => {
                     <button id="like" data-id="${doc.id}"><img src="../img/Likes-muro.png" alt="like">  Me gusta</button>
                 </div>
                 <a href="#"><img src="../img/comment.png" alt="comment">  Comentar</a>
-                <a href="#"><img src="../img/share.png" alt="share">  Compartir</a> 
+                <button id="edit" data-id="${doc.id}"><img src="../img/pencil.png" alt="pencil">  Editar</button> 
+                <button id="delete" data-id="${doc.id}"><img src="../img/garbage.png" alt="garbage">  Eliminar</button> 
             </div>`;
 
 }
@@ -82,7 +93,7 @@ export const createPost = (doc) => {
 export const homeView = async () => {
     let home = "";
     let posts = "";
-    
+
     await firebase.firestore().collection("posts").get().then(async (querySnapshot) => {
         querySnapshot.forEach((doc) => {
             posts += createPost(doc);

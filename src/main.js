@@ -2,7 +2,7 @@
 import { router } from './router/index.routes.js';
 import { registerUser, emailVerification } from './views/register.js';
 import { loginUser, loginGoogle } from './views/login.js';
-import { signOut, addLike } from './views/home.js';
+import { signOut, addLike, deletePost } from './views/home.js';
 import { createPost } from './views/post.js';
 
 
@@ -175,31 +175,40 @@ if (btnLogOut) {
   });
 };
 
+
+document.addEventListener('click', (event) => {
+  if (event.target && event.target.id === `like`) {
+    const targetElement = event.target || event.srcElement;
+    addLike(targetElement.dataset.id, localStorage.getItem("displayName"));
+  } else if (event.target && event.target.id === `delete`) {
+    const targetElement = event.target || event.srcElement;
+    deletePost(targetElement.dataset.id);
+  }
+})
+
+
 const post = document.querySelector('#post-form');
 
 if (post) {
   post.addEventListener('submit', (e) => {
     e.preventDefault();
     let inputPost = document.querySelector('#input-post');
+    
     if (localStorage.getItem("displayName") && localStorage.getItem("email")) {
-      createPost(inputPost.value, localStorage.getItem("displayName"), localStorage.getItem("email"))
-        .then((res) => {
-          console.log(res);
-          inputPost.value = "";
-          window.location.hash = '#/';
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+      
+        createPost(inputPost.value, localStorage.getItem("displayName"), localStorage.getItem("email"))
+          .then((res) => {
+            console.log(res);
+            inputPost.value = "";
+            window.location.hash = '#/';
+          })
+          .catch((error) => {
+            console.log(error);
+
+          })
+      }
     }
-  });
+  );
 }
 
-document.addEventListener('click', (event) => {
-  if (event.target && event.target.id === `like`) {
-    const targetElement = event.target || event.srcElement;
-    addLike(targetElement.dataset.id, localStorage.getItem("displayName"));
-    
-  }
-})
 

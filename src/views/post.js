@@ -1,7 +1,6 @@
 
 export const createPost = (texto, username, email) => {
   return firebase.firestore().collection("posts").add({texto, username, email});
-  
 }
 
 
