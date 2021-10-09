@@ -1,9 +1,18 @@
 
 export const createPost = (texto, username, email) => {
-  return firebase.firestore().collection("posts").add({texto, username, email});
+  return firebase.firestore().collection("posts").add({ texto, username, email });
 }
 
+export const editPost = (id, texto) => {
+  const postRef = firebase.firestore().collection("posts").doc(id);
+  return postRef.update({ texto });
+}
 
+export const getPostText = (id) => {
+  const docRef = firebase.firestore().collection("posts").doc(id);
+
+  return docRef.get();
+}
 
 export const postView = `
 <header class="headerPost">

@@ -17,11 +17,6 @@ export const deletePost = (id) => {
     return firebase.firestore().collection("posts").doc(id).delete();
 }
 
-export const getPostText = (id) => {
-    const docRef = firebase.firestore().collection("posts").doc(id);
-
-    return docRef.get();
-}
 
 
 export const createHome = (posts) => `
@@ -45,7 +40,7 @@ export const createHome = (posts) => `
     <img class="userProfile" src="../img/usuariogato-home.png" alt="usuarioPrincipal">
     <form>
     <a href="#/post">
-    <input class="inputHomeOne" class="inputHomeOne" type="text" placeholder="¿Qué quieres publicar hoy?">
+        <input class="inputHomeOne" type="text" placeholder="¿Qué quieres publicar hoy?">
     </a>
     </form>
 </div>
