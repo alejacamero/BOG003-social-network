@@ -315,3 +315,31 @@ i {
  align-items: center;
  flex-wrap: nowrap;
 }
+
+.like-part {
+    position: relative;
+}
+
+.like-counter {
+    background: rgb(163, 163, 240);
+    color: white;
+    font-size: 14px;
+    padding: 3px;
+    width: 25px;
+    border-radius: 50%;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -16px;
+    right: -10px;
+}
+
+.like-counter span {
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}

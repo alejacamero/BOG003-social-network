@@ -5,11 +5,11 @@ import {postView} from '../views/post.js';
 
 
 
-export const Home = () => {
+export const Home = async () => {
     
     const divElement = document.createElement('div');
     divElement.classList = "text-black";
-    divElement.innerHTML = homeView;
+    divElement.innerHTML = await homeView();
     return divElement;
 };
 
