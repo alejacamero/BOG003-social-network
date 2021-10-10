@@ -76,11 +76,11 @@ const createHtmlPost = (doc) => {
             <div class="takePart">
                 <div class="like-part">
                     <div class="like-counter ${hide}"><span>${likes.toString()}</span></div>
-                    <button id="like" data-id="${doc.id}"><img src="../img/Likes-muro.png" alt="like">  Me gusta</button>
+                    <button id="like" class="post-button" data-id="${doc.id}"><img src="../img/Likes-muro.png" alt="like">  Me gusta</button>
                 </div>
-                <a href="#"><img src="../img/comment.png" alt="comment">  Comentar</a>
-                <button id="edit" data-id="${doc.id}"><img src="../img/pencil.png" alt="pencil">  Editar</button> 
-                <button id="delete" data-id="${doc.id}"><img src="../img/garbage.png" alt="garbage">  Eliminar</button> 
+                <button class="post-button"><img src="../img/comment.png" alt="comment">  Comentar</button>
+                <button id="edit" class="post-button" data-id="${doc.id}"><img src="../img/pencil.png" alt="pencil">  Editar</button> 
+                <button id="delete" class="post-button" data-id="${doc.id}"><img src="../img/garbage.png" alt="garbage">  Eliminar</button> 
             </div>`;
 
 }

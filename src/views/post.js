@@ -45,14 +45,6 @@ export const postView = async () => {
         <h1 class="postMessage">${title}</h1>
         <div>
           <p>¡¡No olvides los mejores momentos al lado de tu humano!!</p>
-          <img src="img/hand-animals-human.png" alt="Hand-animals-human">
-        </div>
-      </div>
-      <div class="muroPost">
-        <img class="userProfile" src="../img/usuariogato-home.png" alt="usuarioPrincipal">
-        <div class="post">
-          <a class="imgSecurity"><img src="img/security.png" alt="Security"/></a>
-          <a class="imgMenuVertical"><img src="img/menu-vertical.png" alt="Menu Vertical"/></a>
         </div>
       </div>
       <div class="postForm">

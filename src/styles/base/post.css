@@ -146,15 +146,12 @@ padding: 10px;
     flex-direction: column;
 }
 
-
-
-#inputPost {
+#input-post {
     background: #F7F8F4;
     border-radius: 23px;
     text-align: center;
     height: 188px;
     border: 2px solid #7BBDC3;
-    width: 93%;
     padding: 13px;
 }
 
