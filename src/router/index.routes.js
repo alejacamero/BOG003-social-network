@@ -4,34 +4,27 @@ let content = document.getElementById('root');
 
 const router = async (route) => {
     content.innerHTML = "";
-    const splitRoute = route.split("/");
-    const urlParams = new URLSearchParams(splitRoute[2]);
-    const idParam = urlParams.get('post');
-    if (idParam) {
-        return content.appendChild(views.Post(idParam));
-    } else {
-        switch (route) {
-            case '':
+    
+    if (route) {
+        switch (true) {
+            case route === '':
                 return content.appendChild(views.Home());
 
-            case '#/':
+            case route === '#/':
                 return content.appendChild(await views.Home());
 
-            case '#/login':
+            case route === '#/login':
                 return content.appendChild(views.Login());
 
-            case '#/register':
+            case route === '#/register':
                 return content.appendChild(views.Register());
 
-            case '#/post':
-                return content.appendChild(views.Post());
+            case route.includes('#/post'):
+                return content.appendChild(await views.Post());
 
             default:
-
         }
      }
-
-
 };
 
 export { router };

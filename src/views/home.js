@@ -49,7 +49,7 @@ export const createHome = (posts) => `
 </footer>
 `;
 
-export const createPost = (doc) => {
+const createHtmlPost = (doc) => {
     let likes = "";
     let hide = "hide";
     if (doc.data().likes && doc.data().likes.length > 0) {
@@ -91,7 +91,7 @@ export const homeView = async () => {
 
     await firebase.firestore().collection("posts").get().then(async (querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            posts += createPost(doc);
+            posts += createHtmlPost(doc);
         });
         home = await createHome(posts);
     });
