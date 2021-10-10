@@ -17,6 +17,12 @@ const domHandler = (divElement) => {
         } else if (event.target && event.target.id === `delete`) {
             const targetElement = event.target || event.srcElement;
             deletePost(targetElement.dataset.id);
+        } else if (event.target && event.target.id === `edit`) {
+            const targetElement = event.target || event.srcElement;
+            window.location.hash = `#/post/?id=${targetElement.dataset.id}`;
         }
+        
+
     })
+
 }

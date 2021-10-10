@@ -17,11 +17,6 @@ export const deletePost = (id) => {
     return firebase.firestore().collection("posts").doc(id).delete();
 }
 
-export const getPostText = (id) => {
-    const docRef = firebase.firestore().collection("posts").doc(id);
-
-    return docRef.get();
-}
 
 
 export const createHome = (posts) => `
@@ -45,7 +40,7 @@ export const createHome = (posts) => `
     <img class="userProfile" src="../img/usuariogato-home.png" alt="usuarioPrincipal">
     <form>
     <a href="#/post">
-    <input class="inputHomeOne" class="inputHomeOne" type="text" placeholder="¿Qué quieres publicar hoy?">
+        <input class="inputHomeOne" type="text" placeholder="¿Qué quieres publicar hoy?">
     </a>
     </form>
 </div>
@@ -54,7 +49,7 @@ export const createHome = (posts) => `
 </footer>
 `;
 
-export const createPost = (doc) => {
+const createHtmlPost = (doc) => {
     let likes = "";
     let hide = "hide";
     if (doc.data().likes && doc.data().likes.length > 0) {
@@ -96,7 +91,7 @@ export const homeView = async () => {
 
     await firebase.firestore().collection("posts").get().then(async (querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            posts += createPost(doc);
+            posts += createHtmlPost(doc);
         });
         home = await createHome(posts);
     });
