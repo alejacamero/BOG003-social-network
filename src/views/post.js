@@ -1,3 +1,10 @@
+import { header } from '../components/header.js';
+
+const isUser = localStorage.getItem("displayName");
+
+if (!isUser) {
+  window.location.hash = '#/login'; 
+}
 
 export const createPost = (texto, username, email) => {
   return firebase.firestore().collection("posts").add({ texto, username, email });
@@ -26,20 +33,7 @@ export const postView = async () => {
   }
 
   return `
-    <header class="headerPost">
-        <div class="menuA">
-          <div class="logoA">
-            <img src="img/logotipofinal-posts.png" alt="Logotipo">
-          </div>
-        </div>
-    </header>
-    <div>
-      <nav class="nav">
-        <a href="#"><img src="img/home-page.png" alt="Home"></a>
-        <a href="#"><img src="img/paw.png" alt="Perfil"></a>
-        <a href="#"><img src="img/logOut-posts.png" alt="logoutPosts"></a>
-      </nav>
-    </div>
+    ${header}
     <section class="postSection">
       <div class="prePost">
         <h1 class="postMessage">${title}</h1>

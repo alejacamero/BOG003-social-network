@@ -15,11 +15,12 @@ firebase.firestore().collection("posts")
     });
   });
 
-const btnLogOut = document.querySelector('#logout');
-if (btnLogOut) {
 
-  btnLogOut.addEventListener('click', async () => {
-    await signOut();
-    window.location.hash = '#/login';
-  });
-};
+document.addEventListener('click', (event) => {
+  if (event.target && event.target.id === `logout`) {
+    signOut();
+    window.location.hash = '#/login'; 
+  } else if (event.target && event.target.id === `home`) {
+    window.location.hash = '#/';
+  }
+});

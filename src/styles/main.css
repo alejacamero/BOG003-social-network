@@ -12,3 +12,13 @@
   font-family: "Roboto", sans-serif;
   font-weight: 200;
 }
+
+.buttonLogOut, .buttonHome {
+  border: none;
+  background: transparent;
+}
+
+.buttonLogOut img, .buttonHome img {
+  pointer-events: none;
+}
+

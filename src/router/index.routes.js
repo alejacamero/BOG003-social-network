@@ -3,12 +3,13 @@ import { views } from '../controllers/index.js';
 let content = document.getElementById('root');
 
 const router = async (route) => {
-    content.innerHTML = "";
     
+    content.innerHTML = "";
+
     if (route) {
         switch (true) {
             case route === '':
-                return content.appendChild(views.Home());
+                window.location.hash = '#/';
 
             case route === '#/':
                 return content.appendChild(await views.Home());
@@ -20,11 +21,21 @@ const router = async (route) => {
                 return content.appendChild(views.Register());
 
             case route.includes('#/post'):
+                validateSession();
                 return content.appendChild(await views.Post());
 
             default:
         }
-     }
+    }
 };
+
+
+const validateSession = () => {
+    const isUser = localStorage.getItem("displayName");
+
+    if (!isUser) {
+        window.location.hash = '#/login';
+    }
+}
 
 export { router };

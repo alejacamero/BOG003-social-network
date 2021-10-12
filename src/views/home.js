@@ -1,4 +1,8 @@
+import { header } from '../components/header.js';
+
 export const signOut = () => {
+    localStorage.removeItem("displayName");
+    localStorage.removeItem("email");
     return firebase.auth().signOut();
 }
 
@@ -20,22 +24,7 @@ export const deletePost = (id) => {
 
 
 export const createHome = (posts) => `
-<header class="header">
-    <div class="menu">
-        <div class="logo">
-            <img src="../img/logotipofinal-home.png" alt="Logotipo">
-        </div>
-    </div>
-</header>
-<div>
-    <nav class="nav">
-        <a href="#"><img src="../img/home-muro.png" alt="home"></a>
-        <a href="#"><img src="../img/paw-home.png" alt="perfil"></a>
-        <button class="buttonLogOut" id="logout">
-            <img src="../img/logout-home.png" alt="logout">
-        </button>                
-    </nav>
-</div>
+${header}
 <div class="muroHome">
     <img class="userProfile" src="../img/usuariogato-home.png" alt="usuarioPrincipal">
     <form>
