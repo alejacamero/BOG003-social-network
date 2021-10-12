@@ -8,6 +8,13 @@ window.addEventListener('hashchange', () => {
   router(window.location.hash);
 });
 
+firebase.firestore().collection("posts")
+  .onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      router(window.location.hash);
+    });
+  });
+
 const btnLogOut = document.querySelector('#logout');
 if (btnLogOut) {
 
